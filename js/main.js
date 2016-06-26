@@ -1,118 +1,86 @@
-$(window).load(function() {
-	$('.loader').fadeOut(200, function() {
-    	$('.banner').addClass('fadeIn');
-    	
-    	//javascript for main page
-		$( document ).ready(function() {
-			$('.navbar-nav').find('li').each(function(i) {	
-				$(this).delay(i*100+1000).queue(function(){$(this).addClass('animated fadeInRight')});
-		    });
-			
-			//toggle the menu button
-			$('#toggle').on('click',function(event) {
-				event.preventDefault();
-				$('#toggle').toggleClass('active');
-		   		$('#overlay').toggleClass('open');
-		  	});
+//javascript for main page
+$( document ).ready(function() {
+    var curr = 0;
+    jQuery.easing.def = 'easeInOutCubic';
 
-			jQuery.easing.def = 'easeInOutCubic';
-			$('#scroll-btn').click(function(event) {
-			event.preventDefault();
-			scrollTopOffset("slide1", 1000);
-
-			});
-			$('.totop').click(function(event) {
-			event.preventDefault();
-			scrollTopOffset("slide0", 1000);
-
-			});
-            
-            $(".contact-button").click(function(e) {
-                e.preventDefault();
-                $('.overlay').delay(1000).removeClass('open');
-                setTimeout(scrollTopOffset("slide3", 1000), 1000);
+    $("#next").click(function(event) {
+        event.preventDefault();
+        //hide the current titles
+        if(curr < 3) {
+            $("#slide"+curr).find("h1").each(function(i) {
+                $animationOutType = $(this).data("animationOut");
+                //alert($animationType);
+                $(this).addClass($animationOutType).delay(1000).queue(function() {
+                    $(this).addClass("out").dequeue();
+                    $(this).removeClass($animationOutType).dequeue();
+                });
             });
+            //scroll the background image
+            scrollTopOffset("slide"+ (++curr), 1000);
             
-			$("#search-toggle").click(function(e) {
-				e.preventDefault();
-				$("#search-box-container").fadeIn();
-			});
-			$('#search-close-btn').click(function(){
-				$("#search-box-container").fadeOut();
-			});	
-			
-			//scrolling 
-			$('#page-indicator').find('a').each(function(i) {
-		        $(this).click(function(event) {
-					event.preventDefault();
-					scrollTopOffset("slide" + $(this).attr('id'), 1000);
-				});
-			});
+            //show the next current title
+            setTimeout(function() {
+                $("#slide"+curr).find("h1").each(function(i) {
+                    $(this).removeClass("out");
+                    $(this).addClass("fadeInUp").delay(1000).queue(function() {
+                        $(this).removeClass("fadeInUp").dequeue();
+                    });        
+                });
+            }, 1000);
+        }//end if(curr < 3)
+        
+        //updating indicator
+        $("ul.indicator li").each(function(i) {
+            $this = $(this);
+            $id = $this.data("id");
+            if($id === curr) $this.addClass("active");
+            else $this.removeClass("active");
+        });
 
-			$(".section-slide").each(function(i) {
-				$(this.element).find('.animated').removeClass('.animated');
-				$(this).waypoint(function(direction) {
-					//track current slide
-					$('#page-indicator li').find('a').removeClass('active');
-					curr = $(this.element).attr('id');
-					curr = curr.substring(curr.length - 1 , curr.length);
-					prev = curr;
-					if(prev == '1' && direction == 'up') {
-						$('#page-indicator li').find('#0').addClass('active');
-					}
-					else {
-						switch(curr) {
-							case '0':
-								follow = 300;
-								break;
-							case '1':
-								follow = 500;
-								break;
-							case '2':
-								follow = 100;
-								break;
-							case '3':
-								follow = 200;
-								break;
-							default:
-								follow = 100;
-						}
-						var item = $(this.element);
-						item.find(".animated").each(function(i){
-							//alert($(this).data("animate-order"));
-							$(this).delay($(this).data("animate-order")*follow+500).queue(function(){	
-								$(this).addClass($(this).data("animate-name"));
-							});
-						});
+    }); //end next click event
+    
+    $("#prev").click(function(event) {
+        event.preventDefault();
+        //hide the current titles
+        if(curr > 0) {
+            $("#slide"+curr).find("h1").each(function(i) {
+                $(this).addClass("fadeOutDown").delay(1000).queue(function() {
+                    $(this).addClass("out").dequeue();
+                    $(this).removeClass("fadeOutDown").dequeue();
+                });
+            });        
+            //scroll the background image
+            scrollTopOffset("slide"+(--curr), 1000);
 
-						$('#page-indicator li').find( "#" + curr).addClass('active');
-					} //end else
-			}, {offset: "50%"});
-		});
-		//end scrolling page
-		}); //end document ready
-	    });
-	
-});
+            //show the next current title
+            setTimeout(function() {
+                $("#slide"+curr).find("h1").each(function(i) {
+                    $(this).removeClass("out");
+                    $(this).addClass("fadeInDown").delay(1000).queue(function() {
+                        $(this).removeClass("fadeInDown").dequeue();
+                    });
+
+                });
+            }, 1000);
+        }
+        
+    }); //end next click event
+    
+    //updating indicator
+        $("ul.indicator li").each(function(i) {
+            $this = $(this);
+            $id = $this.data("id");
+            if($id === curr) $this.addClass("active");
+            else $this.removeClass("active");
+        });
+
+    
+}); //end document ready
 
 //function for scrolling page
 function scrollTopOffset(element, duration) {
-	$('html, body').animate({
+	$('html, body').stop().delay(100).animate({
 		scrollTop: $("#"+element).offset().top
 	}, duration, 'swing');
 }
-
-//particle background
-document.addEventListener('DOMContentLoaded', function () {
-  /*particleground(document.getElementById('particles'), {
-    dotColor: '#bbb',
-    lineColor: '#ddd'
-  });*/
-  var intro = document.getElementById('intro');
-}, false);
-
-
-$(window).scroll(function(){
-	$(".fadeoutonscroll").css("opacity", 1 - $(window).scrollTop() / 500);
-});
 

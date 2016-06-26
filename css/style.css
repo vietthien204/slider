@@ -1,4 +1,185 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*slider css goes here */
 .wrapper {
 	margin: 0;
 	padding: 0;
+    width: 100%;
+    height: 100vh;
+}
+.slide {
+    max-width: 100%;
+    position: relative;
+    
+    height: 100vh;
+}
+.slide .image {
+    width: 50%;
+    height: 100vh;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+}
+.content {
+    position: absolute;
+    z-index: 10;
+    top: 35vh;
+    left: 40px;
+    width: 90%;
+}
+.slide .text-container {
+    overflow: hidden;
+    height: 5em;
+    max-width: 100%;
+    z-index: 1000;
+}
+
+h1.slide-title {
+    font-family: "Arnhem bd";
+    font-size: 4.5em;
+    height: 1.2em;
+    font-weight: bold;
+    color: #000;
+    display: block;
+    width: 100%;
+    z-index: 9999;
+    opacity: 1;
+}
+h1.slide-title.out {
+    margin-top: 4em;
+    opacity: 0;
+}
+.text-container.upper {
+    margin-top: 0;
+}
+.text-container.lower  {
+    margin-top: 0.8sem;
+}
+
+.arrow-container {
+    width: 100px;
+    height: 40px;
+    position: fixed;
+    left:40px;
+    bottom: 20px;
+}
+.arrow-container .prev-arrow, .arrow-container .next-arrow {
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+.arrow .prev-arrow {
+}
+.arrow-container .prev-arrow > a, .arrow-container .next-arrow > a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    line-height: 50px;
+    font: 0.8em 'graphik';
+    text-decoration: none;
+    line-height: 50px;
+    color: #111;
+    font-weight: normal;
+    border-radius: 50%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    text-align: center;
+    transition: all .5s;
+}
+.arrow-container a:hover {
+    color: white;
+    transition: all .5s;
+}
+
+.indicator {
+    width: 20px;
+    height: 100px;
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    margin-top: -50px;
+    z-index: 99999;
+}
+
+.indicator li {
+    width: 10px;
+    height: 10px;
+    margin: 0 0 8px 0;
+    padding: 0;
+    display: block;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    text-indent: -9999px;
+    position: relative;
+}
+.indicator li > a {
+    background: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+}
+.indicator li.active > a {
+    background: #fff !important;
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
 }

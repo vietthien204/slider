@@ -2,20 +2,15 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Thien's Website</title>
-<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic,900italic,900|Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,600italic,700,900,900italic,700italic|Montserrat:400,700&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+<title>my slider</title>
 <link rel="stylesheet" href="font/graphik/stylesheet.css">
 <link rel="stylesheet" href="font/arnhem/stylesheet.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 <!-- end fonts -->
 
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script type='text/javascript' src='js/jquery.particleground.js'></script>
+
 <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="js/jquery.waypoints.min.js"></script>
 <script type="text/javascript" src="js/modernizr.js"></script>
@@ -35,16 +30,71 @@
 <body>
 <div class="wrapper">
     <div class="slider-container">
-        <div class="slider">
-            <div class="image">
-                <img src="images/bg2.jpeg" alt="">
+          <!-- indicators of slides -->
+           <div class="indicator-container">
+               <ul class="indicator">
+                   <li data-id="0" class="active"><a href="#">1</a></li>
+                   <li data-id="1"><a href="#">2</a></li>
+                   <li data-id="2"><a href="#">3</a></li>
+                   <li data-id="3"><a href="#">4</a></li>
+               </ul>
+           </div>
+           <!-- end indicators -->
+           
+        <div class="slide" id="slide0" data-id="0">
+            <div class="image" style="background: url(images/bg2.jpeg) center center no-repeat;"></div>
+            <div class="content">
+                <div class="text-container upper">
+                    <h1 class="slide-title animated" data-animation-out="fadeOutUp" data-animation-in="fadeInUp" data-animation-order="0">Digial agency</h1>
+                </div>
+                <div class="text-container lower">
+                    <h1 class="slide-title animated " data-animation-out="fadeOutUp" data-animation-in="fadeInUp" data-animation-order="1">strive for awesomeness.</h1>
+                </div>
             </div>
-            <div class="text-container upper">
-                <h1 class="slide-title">Digial Agency</h1>
+        </div>
+        
+        
+        <div class="slide" id="slide1" data-id="1">
+            <div class="image" style="background: url(images/bg3.jpeg) center center no-repeat;"></div>
+            <div class="content">
+                <div class="text-container upper">
+                    <h1 class="slide-title animated out" data-animation-out="fadeOutUp" data-animation-in="fadeInUp" data-animation-order="0">Passionate</h1>
+                </div>
+                <div class="text-container lower">
+                    <h1 class="slide-title animated out" data-animation-out="fadeOutUp" data-animation-in="fadeInUp" data-animation-order="1">for design.</h1>
+                </div>
             </div>
-            <div class="text-container lower">
-                <h1 class="slide-title">strive fro awesomeness.</h1>
+        </div>
+        
+        
+        <div class="slide" id="slide2" data-id="2">
+            <div class="image" style="background: url(images/bg4.jpeg) center center no-repeat;"></div>
+            <div class="content">
+                <div class="text-container upper">
+                    <h1 class="slide-title animated out" data-animation="fadeInUp" data-animation-order="0">We make</h1>
+                </div>
+                <div class="text-container lower">
+                    <h1 class="slide-title animated out" data-animation="fadeInUp" data-animation-order="1">good shit.</h1>
+                </div>
             </div>
+        </div>
+        
+        
+        <div class="slide" id="slide3" data-id="3">
+            <div class="image" style="background: url(images/bg5.jpeg) center center no-repeat;"></div>
+            <div class="content">
+                <div class="text-container upper">
+                    <h1 class="slide-title animated out" data-animation="fadeInUp" data-animation-order="0">Digial agency</h1>
+                </div>
+                <div class="text-container lower">
+                    <h1 class="slide-title animated out" data-animation="fadeInUp" data-animation-order="1">strive for awesomeness.</h1>
+                </div>
+            </div>
+        </div>
+        
+        <div class="arrow-container">
+            <div class="prev-arrow arrow" data-direction="up"><a href="#" id="prev"><img src="images/up-arrow.png"/></a></div>
+            <div class="next-arrow arrow" data-direction="down"><a href="#" id="next"><img src="images/down-arrow.png"/></a></div>
         </div>
     </div>
 </div>
