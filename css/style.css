@@ -57,7 +57,7 @@ table {
 .slide {
     max-width: 100%;
     position: relative;
-    
+    overflow: hidden;
     height: 100vh;
 }
 .slide .image {
@@ -77,12 +77,11 @@ table {
     width: 90%;
 }
 .slide .text-container {
-    overflow: hidden;
-    height: 5em;
+    overflow: hidden !important;
+    height: 4.5em;
     max-width: 100%;
     z-index: 1000;
 }
-
 h1.slide-title {
     font-family: "Arnhem bd";
     font-size: 4.5em;
@@ -92,7 +91,6 @@ h1.slide-title {
     display: block;
     width: 100%;
     z-index: 9999;
-    opacity: 1;
 }
 h1.slide-title.out {
     margin-top: 4em;
@@ -182,4 +180,14 @@ h1.slide-title.out {
     -moz-transition: all .5s;
     -ms-transition: all .5s;
     -o-transition: all .5s;
+}
+
+@media (max-width: 767px) {
+    .slide .image {
+        width: 100%;
+    }
+    h1.slide-title {
+        font-size: 2.5em;
+        line-height: 2.5em;
+    }
 }

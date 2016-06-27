@@ -16,7 +16,7 @@ $( document ).ready(function() {
                 });
             });
             //scroll the background image
-            scrollTopOffset("slide"+ (++curr), 1000);
+            scrollTopOffset("slide"+ (++curr), 800);
             
             //show the next current title
             setTimeout(function() {
@@ -50,7 +50,7 @@ $( document ).ready(function() {
                 });
             });        
             //scroll the background image
-            scrollTopOffset("slide"+(--curr), 1000);
+            scrollTopOffset("slide"+(--curr), 800);
 
             //show the next current title
             setTimeout(function() {
@@ -64,15 +64,17 @@ $( document ).ready(function() {
             }, 1000);
         }
         
-    }); //end next click event
-    
-    //updating indicator
+        
+           //updating indicator
         $("ul.indicator li").each(function(i) {
             $this = $(this);
             $id = $this.data("id");
             if($id === curr) $this.addClass("active");
             else $this.removeClass("active");
         });
+    }); //end next click event
+    
+ 
 
     
 }); //end document ready
